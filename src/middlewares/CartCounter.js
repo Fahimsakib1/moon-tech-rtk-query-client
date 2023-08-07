@@ -8,8 +8,8 @@ const CartCounter = (store) => (next) => (action) => {
     const state = store.getState();
     const cart = state.cart.cart; //cart ekta array
 
-    console.log("Current State: ", store.getState());
-    console.log("Action: ", action);
+    // console.log("Current State: ", store.getState());
+    // console.log("Action: ", action);
 
     if (action.type === AddToCart) {
 

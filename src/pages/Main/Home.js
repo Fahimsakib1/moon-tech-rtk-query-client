@@ -43,17 +43,19 @@ const Home = () => {
 
   let filterContent;
 
-  if (products.length) {
-    filterContent = products.map((product) => (
-      <ProductCard key={product.model} product={product} />
-    ))
+  if (products?.length) {
+    filterContent = 
+    Array.isArray(products) ?
+    products.map((product) => (
+      <ProductCard key={product.model} product={product} />)) : ''
   }
 
 
-  if (products.length && (stock || brands.length)) {
+  if (products?.length && (stock || brands.length)) {
 
-    filterContent = products
-      .filter((product) => {
+    filterContent = 
+    Array.isArray(products) ?
+    products.filter((product) => {
         if (stock) {
           return product.status === true
         }
@@ -67,7 +69,8 @@ const Home = () => {
       })
       .map((product) => (
         <ProductCard key={product.model} product={product} />
-      ))
+      )) 
+      : ""
   }
 
   const check = useSelector((state) => state.products);
@@ -136,8 +139,8 @@ const Home = () => {
               <RotatingLines
                 strokeColor="gray"
                 strokeWidth="5"
-                animationDuration="0.75"
-                width="90"
+                animationDuration="0.5"
+                width="80"
                 visible={true}
               />
             </div>
