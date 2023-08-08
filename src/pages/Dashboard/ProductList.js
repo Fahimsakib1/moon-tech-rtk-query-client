@@ -140,7 +140,14 @@ const ProductList = () => {
                                   </svg>
                                 </button>
 
-                                <Link onClick={() => dispatch(getSingleProduct(_id))} to ='/dashboard/editProduct'>
+
+                                {/* <Link onClick={() => dispatch(getSingleProduct(_id))} to ='/dashboard/editProduct'>
+                                  <div title='Edit Product' className='cursor-pointer p-2 hover:text-blue-600 hover:bg-gray-300 rounded-full'>
+                                    <FiEdit className="text-xl font-semibold"></FiEdit>
+                                  </div>
+                                </Link> */}
+
+                                <Link to ={`/dashboard/editProduct/${_id}`}>
                                   <div title='Edit Product' className='cursor-pointer p-2 hover:text-blue-600 hover:bg-gray-300 rounded-full'>
                                     <FiEdit className="text-xl font-semibold"></FiEdit>
                                   </div>

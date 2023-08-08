@@ -34,8 +34,7 @@ export const getSpecificProduct = async (id) => {
 }
 
 //update a specific product using axios
-export const updateProduct = async (id, product) => {
-    // await axios.put(`/updateProduct/${id}`, product);
-    const response = await axios.patch(`/updateProduct/${id}`, product);
+export const updateProduct = async (product) => {
+    const response = await axios.put(`/updateProduct/${product.id}`, product);
     return response.data;
 }

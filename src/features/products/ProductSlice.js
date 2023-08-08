@@ -51,61 +51,35 @@ export const getSingleProduct = createAsyncThunk("products/getSingleProduct",
 
 
 
-// export const editProduct = createAsyncThunk("products/updateProduct",
-//     async (id, product) => {
-//         const response = await fetch(`http://localhost:5000/updateProduct/${id}`, {
-//             method: 'PUT',
-//             body: JSON.stringify(product),
-//             headers: {
-//                 'Content-Type': 'application/json',
-//             },
-//         })
-//         const data = await response.json();
-//         console.log("Response: ", data);
-//         return data;
-//     })
-
-
 export const editProduct = createAsyncThunk("products/updateProduct",
-    async (id, product) => {
-        console.log("ID: ", id)
-        try {
-            const response = await API.patch(`/updateProduct/${id}`, product);
-            console.log("Response: ", response);
-            return response.data;
+    async (product, { rejectWithValue }) => {
+        
+        //nicher 2 ta line na likhe ei full try and catch block er code ta run korleo kaj hobe..
+
+        // try {
+        //     const response = await fetch(`http://localhost:5000/updateProduct/${product.id}`, {
+        //         method: 'PUT',
+        //         body: JSON.stringify(product),
+        //         headers: {
+        //             'Content-Type': 'application/json',
+        //         },
+        //     })
+        //     const data = await response.json();
+        //     if (data.acknowledged === true) {
+        //         return data;
+        //     }
+        // }
+        // catch (error) {
+        //     return rejectWithValue(error.response.data);
+        // }
+
+        const updatedProduct = await updateProduct(product);
+        return updatedProduct
+    })
 
 
-            // const updatedProduct = await updateProduct(id, product)
-            // return updatedProduct;
-        } catch (err) {
-            console.log(err);
-        }
-    }
-);
 
 
-
-
-
-
-
-
-
-
-
-// export const updateTour = createAsyncThunk(
-//     "tour/updateTour",
-//     async ({ id, updatedTourData, toast, navigate }, { rejectWithValue }) => {
-//         try {
-//             const response = await API.patch(`/tour/${id}`, updatedTourData);
-//             toast.success("Tour Updated Successfully");
-//             navigate("/dashboard");
-//             return response.data;
-//         } catch (err) {
-//             return rejectWithValue(err.response.data);
-//         }
-//     }
-// );
 
 
 
