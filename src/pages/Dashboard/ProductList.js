@@ -67,7 +67,7 @@ const ProductList = () => {
 
             <>
               <header class='px-5 py-4 border-b border-gray-100'>
-                <div class='text-center font-semibold text-gray-800'>Products List</div>
+                <div class='text-center font-semibold text-gray-800'>{products && products.length} Products Added</div>
               </header>
               <div class='overflow-x-auto p-3'>
                 <table class='table-auto w-full'>
@@ -125,7 +125,7 @@ const ProductList = () => {
 
                                 <button onClick={() => dispatch(removeProduct(_id))}>
                                   <svg
-                                    class='w-8 h-8 text-red-600 hover:text-red-700 rounded-full hover:bg-gray-100 p-1'
+                                    class='w-8 h-8 text-red-600 hover:text-red-700 rounded-full hover:bg-gray-400 p-1'
                                     fill='none'
                                     stroke='currentColor'
                                     viewBox='0 0 24 24'

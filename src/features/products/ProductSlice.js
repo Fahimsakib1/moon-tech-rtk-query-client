@@ -14,7 +14,6 @@ const initialState = {
     deleteSuccess: false,
     updateSuccess: false,
     error: "",
-
 }
 
 export const getProducts = createAsyncThunk("products/getProducts", async () => {
@@ -35,7 +34,7 @@ export const addProduct = createAsyncThunk("products/addProduct",
 
 export const removeProduct = createAsyncThunk("products/removeProduct",
     async (id, thunkAPI) => {
-        const product = await deleteProduct(id)
+        const product = deleteProduct(id)
         thunkAPI.dispatch(removeFromProductList(id))
         return product;
 
@@ -132,7 +131,7 @@ const ProductSlice = createSlice({
 
 
 
-        //add product data to server
+        //add product data
         builder
             .addCase(addProduct.pending, (state, action) => {
                 state.isLoading = true;
@@ -165,6 +164,8 @@ const ProductSlice = createSlice({
             .addCase(removeProduct.fulfilled, (state, action) => {
                 state.isLoading = false;
                 state.isError = false;
+                //ei kine na likhleo hobe
+                state.products = state.products.filter(product => product._id !== action.payload);
                 state.deleteSuccess = true
             })
             .addCase(removeProduct.rejected, (state, action) => {

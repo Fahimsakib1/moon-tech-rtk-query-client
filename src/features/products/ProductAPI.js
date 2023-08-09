@@ -27,14 +27,23 @@ export const deleteProduct = async (id) => {
     await axios.delete(`/product/${id}`)
 }
 
+
+
 //get a specific product for update using axios
 export const getSpecificProduct = async (id) => {
-    const product = await axios.get(`/allProducts/product/${id}`);
-    return product.data
+    const response = await axios.get(`/allProducts/product/${id}`);
+
+     //axios use korle amra response resolve er por amra response er moddhe data er moddhe jei object or array ta fetch korchi sheita pai. tai return response.data likha holo
+    return response.data
 }
+
+
 
 //update a specific product using axios
 export const updateProduct = async (product) => {
     const response = await axios.put(`/updateProduct/${product.id}`, product);
+    
+    //axios use korle amra response resolve er por amra response er moddhe data er moddhe jei object or array ta fetch korchi sheita pai. tai return response.data likha holo
+
     return response.data;
 }

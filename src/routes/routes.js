@@ -8,6 +8,7 @@ import Cart from "../pages/Main/Cart";
 import Home from "../pages/Main/Home";
 import TopRated from "../pages/Main/TopRated";
 import EditProduct from "../pages/Dashboard/EditProduct";
+import Try from "../pages/Dashboard/Try";
 
 const routes = createBrowserRouter([
   {
@@ -48,7 +49,13 @@ const routes = createBrowserRouter([
         path: "/dashboard/editProduct/:id",
         element: <EditProduct></EditProduct>,
         loader: ({params}) => fetch(`http://localhost:5000/allProducts/product/${params.id}`)
-      }
+      },
+
+
+      {
+        path: "/dashboard/try",
+        element: <Try/>,
+      },
     ],
   },
 ]);
