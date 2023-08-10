@@ -11,7 +11,7 @@ const ProductCard = ({ product }) => {
 
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
-  console.log("Home Page State: ", state);
+  // console.log("Home Page State: ", state);
 
 
 
